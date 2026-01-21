@@ -1,0 +1,88 @@
+{
+  "name": "doit-task-board",
+  "version": "2.0.0",
+  "description": "Doit - 跨平台任务管理板",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "icons": "bash scripts/generate-icons.sh",
+    "build": "npm run icons && electron-builder",
+    "build:win": "npm run icons && electron-builder --win",
+    "build:mac": "npm run icons && electron-builder --mac",
+    "build:mac-portable": "npm run icons && electron-builder --mac && node scripts/create-portable.js",
+    "build:all": "npm run icons && electron-builder -mwl"
+  },
+  "keywords": [
+    "task",
+    "todo",
+    "trello",
+    "electron",
+    "跨平台",
+    "任务管理"
+  ],
+  "author": {
+    "name": "Dylan",
+    "email": "dylan@example.com"
+  },
+  "homepage": "https://github.com/dylan/doit-task-board",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^18.3.5",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.doit.taskboard",
+    "productName": "Doit",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "app.js",
+      "styles.css",
+      "assets/**/*",
+      "entitlements.mac.plist",
+      "launch-mac.sh",
+      "fix-quarantine.sh",
+      "scripts/create-portable.js",
+      "docs/**/*"
+    ],
+    "mac": {
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Office",
+      "maintainer": "Dylan <dylan@example.com>"
+    }
+  }
+}

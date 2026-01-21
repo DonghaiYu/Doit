@@ -1,0 +1,13 @@
+# 忽略 assets 中的临时构建文件，但保留图标源文件
+assets/.icon-build/
+assets/.transparency-test/
+# 保留以下图标文件供打包使用（通过 ! 取消忽略）
+!assets/icon.svg
+!assets/icon.icns
+!assets/icon.ico
+!assets/icon.png
+
+dist/
+node_modules/
+*.log
+.DS_Store
